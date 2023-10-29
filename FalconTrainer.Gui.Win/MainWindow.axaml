@@ -2,13 +2,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-		Width="800" Height="600"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
+		MinWidth="128" MinHeight="64"
+		Width="800" Height="480"
         x:Class="FalconTrainer.Gui.Win.MainWindow"
         Title="FalconTrainer.Gui.Win">
 
 	<Grid RowDefinitions="*,auto">
-		<ScrollViewer Grid.Row="0">
+		<Viewbox Grid.Row="0"
+				 Stretch="Uniform"
+				 StretchDirection="DownOnly"
+				 Margin="16"
+			>
 			<StackPanel
 				FlowDirection="LeftToRight"
 				HorizontalAlignment="Center"
@@ -32,7 +37,7 @@
 				<TextBox VerticalAlignment="Center" Background="AliceBlue" Focusable="True">10248</TextBox>
 				<Label VerticalAlignment="Center" Classes="EmptyRightSide"></Label>
 			</StackPanel>
-		</ScrollViewer>
+		</Viewbox>
 
 		<Grid ColumnDefinitions="auto,*" Grid.Row="1">
 			<Grid.Styles>
