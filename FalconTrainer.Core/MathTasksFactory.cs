@@ -6,25 +6,38 @@ using System.Linq;
 
 public static class MathTasksFactory
 {
-    private static readonly (int Level, Range Operands1, Range Operands2, Range Results, Func<int, int, int> Calculator, Func<int, int, int, AbstractMathTaskPart[]> TaskCreator)[] _twoOperandTemplates =
+    public static readonly (int Level, string Title, Range Operands1, Range Operands2, Range Results, Func<int, int, int> Calculator, Func<int, int, int, AbstractMathTaskPart[]> TaskCreator)[] _twoOperandTemplates =
     {
-        (0, new Range(0, 9), new Range(0, 9), new Range(0, 10), (a, b) => a + b,
+        (0, "sčítanie jednociferných čísel bez prechodu cez desiatku",
+            new Range(0, 9), new Range(0, 9), new Range(0, 10), (a, b) => a + b,
             (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} + {b} ="), new ResultMathTaskPart($"{r}") }),
-        (1, new Range(0, 10), new Range(0, 9), new Range(0, 9), (a, b) => a - b,
+        (1, "odčítanie jednociferných čísel bez prechodu cez desiatku",
+            new Range(0, 10), new Range(0, 9), new Range(0, 9), (a, b) => a - b,
             (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} - {b} ="), new ResultMathTaskPart($"{r}") }),
-        (2, new Range(0, 10), new Range(0, 10), new Range(10, 20), (a, b) => a + b,
+        (2, "sčítanie jednociferných čísel bez prechodu cez desiatku - doplňte sčítance",
+            new Range(0, 9), new Range(0, 9), new Range(0, 10), (a, b) => a + b,
+            (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} +"), new ResultMathTaskPart($"{b}"), new KnownMathTaskPart($"= {r}") }),
+        (2, "sčítanie jednociferných čísel bez prechodu cez desiatku - doplňte sčítance",
+            new Range(0, 9), new Range(0, 9), new Range(0, 10), (a, b) => a + b,
+            (a, b, r) => new AbstractMathTaskPart[] { new ResultMathTaskPart($"{a}"), new KnownMathTaskPart($"+ {b} = {r}") }),
+        (3, "sčítanie jednociferných čísel s prechodom cez desiatku",
+            new Range(0, 10), new Range(0, 10), new Range(10, 20), (a, b) => a + b,
             (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} + {b} ="), new ResultMathTaskPart($"{r}") }),
-        (3, new Range(10, 20), new Range(0, 9), new Range(10, 20), (a, b) => a - b,
+        (4, "odčítanie od max 20 bez prechodu cez desiatku",
+            new Range(10, 20), new Range(0, 9), new Range(10, 20), (a, b) => a - b,
             (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} - {b} ="), new ResultMathTaskPart($"{r}") }),
-        (4, new Range(10, 20), new Range(0, 20), new Range(0, 20), (a, b) => a - b,
+        (5, "odčítanie od max 20 s prechodom cez desiatku",
+            new Range(10, 20), new Range(0, 20), new Range(0, 20), (a, b) => a - b,
             (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} - {b} ="), new ResultMathTaskPart($"{r}") }),
-        (5, new Range(0, 100), new Range(0, 100), new Range(0, 100), (a, b) => a + b,
+        (6, "sčítanie ľubovoľných čísel od 0 do 100 bez prechodu cez 100",
+            new Range(0, 100), new Range(0, 100), new Range(0, 100), (a, b) => a + b,
             (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} + {b} ="), new ResultMathTaskPart($"{r}") }),
-        (6, new Range(0, 100), new Range(0, 100), new Range(0, 100), (a, b) => a - b,
+        (7, "odčítanie ľubovoľných čísel od 0 do 100 bez prechodu do záporných výsledkov",
+            new Range(0, 100), new Range(0, 100), new Range(0, 100), (a, b) => a - b,
             (a, b, r) => new AbstractMathTaskPart[] { new KnownMathTaskPart($"{a} - {b} ="), new ResultMathTaskPart($"{r}") })
     };
 
-    public static int MaxAllowedLevel => _twoOperandTemplates.Select(x => x.Level).Max();
+    public static int MaxAllowedLevel => _twoOperandTemplates.Select((_, level) => level).Max();
 
     public static IEnumerable<MathTask> GenerateAllPossibleTasks(int maxLevel)
     {
