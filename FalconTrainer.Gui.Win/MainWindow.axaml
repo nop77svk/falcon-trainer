@@ -29,18 +29,27 @@
 						<Setter Property="Margin" Value="0,0,32,0"/>
 					</Style>
 					<Style Selector="Label.NonEmptyRightSide">
-						<Setter Property="Margin" Value="0,0,0,0"/>
+						<Setter Property="Margin" Value="32,0,0,0"/>
 					</Style>
 				</StackPanel.Styles>
 
-				<Label VerticalAlignment="Center" Classes="NonEmptyLeftSide">64 + 23 =</Label>
+				<Label VerticalAlignment="Center" Classes="NonEmptyLeftSide" Name="LeftKnownPart">64 + 23 =</Label>
 				<TextBox
+					Name="UnknownPart"
 					VerticalAlignment="Center"
 					Background="AliceBlue"
 					AcceptsReturn="False"
 					Focusable="True"
+					TabIndex="0"
 					>?</TextBox>
-				<Label VerticalAlignment="Center" Classes="EmptyRightSide"></Label>
+				<Button Name="btnSubmit"
+					Content="Submit"
+					IsDefault="True"
+					Click="btnSubmitClick"
+					IsVisible="True"
+					TabIndex="1"
+					Focusable="False" />
+				<Label VerticalAlignment="Center" Classes="EmptyRightSide" Name="RightKnownPart"></Label>
 			</StackPanel>
 		</Viewbox>
 
