@@ -34,7 +34,12 @@
 				</StackPanel.Styles>
 
 				<Label VerticalAlignment="Center" Classes="NonEmptyLeftSide">64 + 23 =</Label>
-				<TextBox VerticalAlignment="Center" Background="AliceBlue" Focusable="True">10248</TextBox>
+				<TextBox
+					VerticalAlignment="Center"
+					Background="AliceBlue"
+					AcceptsReturn="False"
+					Focusable="True"
+					>?</TextBox>
 				<Label VerticalAlignment="Center" Classes="EmptyRightSide"></Label>
 			</StackPanel>
 		</Viewbox>
