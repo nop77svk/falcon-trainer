@@ -19,6 +19,7 @@ internal partial class MainWindow : Window
 
         try
         {
+            // 2do! move to its own class MathTaskRepository
             _mathTasks = MathTasksFactory.GenerateAllPossibleTasks(6)
                 .ToDictionary(task => task.Id);
         }
@@ -49,6 +50,7 @@ internal partial class MainWindow : Window
 
     private MathTask GetRandomTask()
     {
+        // 2do! move to own class MathTaskRepository
         int taskId = Random.Shared.Next(0, _maxTaskId + 1);
         return _mathTasks[taskId];
     }
