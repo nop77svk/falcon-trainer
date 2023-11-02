@@ -1,4 +1,4 @@
-﻿namespace FalconTrainer.Gui.Win;
+﻿namespace NoP77svk.FalconTrainer.Gui.Win;
 
 using System;
 using Avalonia;

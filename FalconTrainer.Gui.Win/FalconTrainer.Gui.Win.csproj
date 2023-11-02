@@ -17,6 +17,9 @@
 		<PackageId>NoP77svk.FalconTrainer.Gui.Win</PackageId>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="MainWindowModel.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.0.2" />
@@ -46,6 +49,10 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="MainWindowModel.cs" />
 	</ItemGroup>
 
 	<Target Name="PostClean" AfterTargets="Clean">

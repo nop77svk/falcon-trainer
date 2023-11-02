@@ -5,9 +5,15 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
 		MinWidth="128" MinHeight="64"
 		Width="800" Height="480"
-        x:Class="FalconTrainer.Gui.Win.MainWindow"
-        Title="FalconTrainer.Gui.Win">
+        x:Class="NoP77svk.FalconTrainer.Gui.Win.MainWindow"
+        Title="Falcon Trainer">
 
+<!--
+	<Window.DataContext>
+		xmlns:dc="NoP77svk.FalconTrainer.Gui.Win"
+		<dc:MainWindowModel />
+	</Window.DataContext>
+-->
 	<Grid RowDefinitions="*,auto">
 		<Viewbox Grid.Row="0"
 				 Stretch="Uniform"
@@ -33,7 +39,7 @@
 					</Style>
 				</StackPanel.Styles>
 
-				<Label VerticalAlignment="Center" Classes="NonEmptyLeftSide" Name="LeftKnownPart">64 + 23 =</Label>
+				<Label VerticalAlignment="Center" Classes="NonEmptyLeftSide" Name="LeftKnownPart">{Binding MathTaskLeftKnownPart}</Label>
 				<TextBox
 					Name="UnknownPart"
 					VerticalAlignment="Center"
@@ -41,7 +47,7 @@
 					AcceptsReturn="False"
 					Focusable="True"
 					TabIndex="0"
-					>?</TextBox>
+					>{Binding MathTaskResultPlaceholder}</TextBox>
 				<Button Name="btnSubmit"
 					Content="Submit"
 					IsDefault="True"
@@ -49,7 +55,7 @@
 					IsVisible="True"
 					TabIndex="1"
 					Focusable="False" />
-				<Label VerticalAlignment="Center" Classes="EmptyRightSide" Name="RightKnownPart"></Label>
+				<Label VerticalAlignment="Center" Classes="EmptyRightSide" Name="RightKnownPart">{Binding MathTaskRightKnownPart}</Label>
 			</StackPanel>
 		</Viewbox>
 
