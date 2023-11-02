@@ -2,18 +2,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:dc="using:NoP77svk.FalconTrainer.Gui.Win"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
 		MinWidth="128" MinHeight="64"
 		Width="800" Height="480"
         x:Class="NoP77svk.FalconTrainer.Gui.Win.MainWindow"
         Title="Falcon Trainer">
 
-<!--
 	<Window.DataContext>
-		xmlns:dc="NoP77svk.FalconTrainer.Gui.Win"
 		<dc:MainWindowModel />
 	</Window.DataContext>
--->
+
 	<Grid RowDefinitions="*,auto">
 		<Viewbox Grid.Row="0"
 				 Stretch="Uniform"

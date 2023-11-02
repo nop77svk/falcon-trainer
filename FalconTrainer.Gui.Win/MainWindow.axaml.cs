@@ -8,10 +8,12 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using NoP77svk.FalconTrainer.Core;
 
-internal partial class MainWindow : Window
+internal partial class MainWindow
+    : Window
 {
     private Dictionary<int, MathTask> _mathTasks = new Dictionary<int, MathTask>();
     private int _maxTaskId => _mathTasks.Last().Key; // 2do! unhandled exception!
+    private MainWindowModel? _dc => (MainWindowModel?)DataContext;
 
     internal MainWindow()
     {
@@ -57,31 +59,40 @@ internal partial class MainWindow : Window
 
     private void ShowTask(MathTask mathTask)
     {
-        this.UnknownPart.Text = "?";
+        if (_dc == null)
+            throw new NullReferenceException("DataContext not set");
+
+        _dc.MathTaskResultPart = MainWindowModel.MathTaskResultPlaceholder;
 
         // 2do! rework to dynamically contstructing/deconstructing the known/unknown parts and their styles
         if (mathTask.Parts.Length == 2 && mathTask.Parts[0] is KnownMathTaskPart)
         {
-            this.LeftKnownPart.Content = mathTask.Parts[0].Value;
+            _dc.MathTaskLeftKnownPart = mathTask.Parts[0].Value;
             this.LeftKnownPart.IsVisible = true;
-            this.UnknownPart.Tag = mathTask.Parts[1].Value;
-            this.RightKnownPart.Content = string.Empty;
+
+            _dc.MathTaskExpectedResult = mathTask.Parts[1].Value;
+
+            _dc.MathTaskRightKnownPart = string.Empty;
             this.RightKnownPart.IsVisible = false;
         }
         else if (mathTask.Parts.Length == 2 && mathTask.Parts[0] is ResultMathTaskPart)
         {
-            this.LeftKnownPart.Content = string.Empty;
+            _dc.MathTaskLeftKnownPart = string.Empty;
             this.LeftKnownPart.IsVisible = false;
-            this.UnknownPart.Tag = mathTask.Parts[0].Value;
-            this.RightKnownPart.Content = mathTask.Parts[1].Value;
+
+            _dc.MathTaskExpectedResult = mathTask.Parts[0].Value;
+
+            _dc.MathTaskRightKnownPart = mathTask.Parts[1].Value;
             this.RightKnownPart.IsVisible = true;
         }
         else if (mathTask.Parts.Length == 3)
         {
-            this.LeftKnownPart.Content = mathTask.Parts[0].Value;
+            _dc.MathTaskLeftKnownPart = mathTask.Parts[0].Value;
             this.LeftKnownPart.IsVisible = false;
-            this.UnknownPart.Tag = mathTask.Parts[1].Value;
-            this.RightKnownPart.Content = mathTask.Parts[2].Value;
+
+            _dc.MathTaskExpectedResult = mathTask.Parts[1].Value;
+
+            _dc.MathTaskRightKnownPart = mathTask.Parts[2].Value;
             this.RightKnownPart.IsVisible = true;
         }
 

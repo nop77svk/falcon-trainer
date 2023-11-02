@@ -17,9 +17,6 @@
 		<PackageId>NoP77svk.FalconTrainer.Gui.Win</PackageId>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 	</PropertyGroup>
-	<ItemGroup>
-	  <Compile Remove="MainWindowModel.cs" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.0.2" />
