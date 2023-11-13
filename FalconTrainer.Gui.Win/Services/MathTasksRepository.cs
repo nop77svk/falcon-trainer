@@ -9,8 +9,8 @@ using NoP77svk.FalconTrainer.Core;
 
 internal class MathTasksRepository
 {
-    private Dictionary<int, MathTask> _mathTasks = new Dictionary<int, MathTask>();
-    private int _maxTaskId => _mathTasks.Last().Key; // 2do! unhandled exception!
+    private readonly Dictionary<int, MathTask> _mathTasks = new Dictionary<int, MathTask>();
+    private int MaxTaskId => _mathTasks.Last().Key; // 2do! unhandled exception!
 
     public MathTasksRepository(int maxLevel)
     {
@@ -28,7 +28,7 @@ internal class MathTasksRepository
 
     public MathTask GetRandomTask()
     {
-        int taskId = Random.Shared.Next(0, _maxTaskId + 1);
+        int taskId = Random.Shared.Next(0, MaxTaskId + 1);
         return _mathTasks[taskId];
     }
 }

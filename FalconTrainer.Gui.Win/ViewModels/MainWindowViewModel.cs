@@ -13,7 +13,7 @@ internal partial class MainWindowViewModel : ViewModelBase
         _mathTaskContent = new MathTaskControlViewModel(_mathTaskRepository.GetRandomTask());
     }
 
-    private MathTasksRepository _mathTaskRepository;
+    private readonly MathTasksRepository _mathTaskRepository;
 
     [ObservableProperty]
     private float _progressMax = 125;
