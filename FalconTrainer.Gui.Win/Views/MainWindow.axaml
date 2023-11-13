@@ -20,7 +20,7 @@
 				 Stretch="Uniform"
 				 StretchDirection="DownOnly"
 				 Margin="16">
-			<v:MathTaskControl/>
+			<v:MathTaskControl x:Name="TheMathTask" Name="TheMathTask" Content="{Binding MathTaskContent}" />
 		</Viewbox>
 
 		<Button Name="BtnSubmit"

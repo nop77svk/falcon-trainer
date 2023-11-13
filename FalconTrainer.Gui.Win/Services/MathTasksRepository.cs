@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using NoP77svk.FalconTrainer.Core;
 
-internal class MathTaskService
+internal class MathTasksRepository
 {
     private Dictionary<int, MathTask> _mathTasks = new Dictionary<int, MathTask>();
     private int _maxTaskId => _mathTasks.Last().Key; // 2do! unhandled exception!
 
-    public MathTaskService(int maxLevel)
+    public MathTasksRepository(int maxLevel)
     {
         try
         {
@@ -24,5 +24,11 @@ internal class MathTaskService
         {
             throw new Exception("This should not have happened!", e); // 2do!
         }
+    }
+
+    public MathTask GetRandomTask()
+    {
+        int taskId = Random.Shared.Next(0, _maxTaskId + 1);
+        return _mathTasks[taskId];
     }
 }
