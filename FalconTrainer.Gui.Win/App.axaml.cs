@@ -1,8 +1,9 @@
-namespace FalconTrainer.Gui.Win;
+namespace NoP77svk.FalconTrainer.Gui.Win;
 
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Win.Views;
 
 public partial class App : Application
 {

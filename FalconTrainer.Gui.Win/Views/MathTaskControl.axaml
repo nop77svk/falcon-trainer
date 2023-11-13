@@ -1,0 +1,53 @@
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:vm="clr-namespace:NoP77svk.FalconTrainer.Gui.Win.ViewModels"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
+	MinWidth="128" MinHeight="64"
+	x:DataType="vm:MathTaskControlViewModel"
+	x:Class="NoP77svk.FalconTrainer.Gui.Win.Views.MathTaskControl">
+
+	<UserControl.DataContext>
+		<vm:MathTaskControlViewModel />
+	</UserControl.DataContext>
+
+	<StackPanel
+		FlowDirection="LeftToRight"
+		HorizontalAlignment="Center"
+		VerticalAlignment="Center"
+		Orientation="Horizontal">
+		<StackPanel.Styles>
+			<Style Selector="Label,TextBox">
+				<Setter Property="FontFamily" Value="Arial"/>
+				<Setter Property="FontSize" Value="96"/>
+			</Style>
+			<Style Selector="Label.NonEmptyLeftSide">
+				<Setter Property="Margin" Value="0,0,32,0"/>
+			</Style>
+			<Style Selector="Label.NonEmptyRightSide">
+				<Setter Property="Margin" Value="32,0,0,0"/>
+			</Style>
+		</StackPanel.Styles>
+
+		<Label
+			VerticalAlignment="Center"
+			Classes="NonEmptyLeftSide"
+			Name="LeftKnownPart"
+			Content="{Binding LeftKnownPart}" />
+		<TextBox
+			Name="UnknownPart"
+			VerticalAlignment="Center"
+			Background="AliceBlue"
+			AcceptsReturn="False"
+			Focusable="True"
+			Watermark="{Binding UnknownPartWatermark}"
+			TabIndex="0"
+			Text="{Binding UnknownPart}" />
+		<Label
+			VerticalAlignment="Center"
+			Classes="EmptyRightSide"
+			Content="{Binding RightKnownPart}" />
+	</StackPanel>
+</UserControl>

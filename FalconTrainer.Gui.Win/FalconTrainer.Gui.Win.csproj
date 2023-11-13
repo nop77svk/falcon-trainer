@@ -49,6 +49,10 @@
 		<Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="DataModel\" />
+	</ItemGroup>
+
 	<Target Name="PostClean" AfterTargets="Clean">
 		<RemoveDir Directories="$(BaseIntermediateOutputPath)" />
 		<!-- obj -->

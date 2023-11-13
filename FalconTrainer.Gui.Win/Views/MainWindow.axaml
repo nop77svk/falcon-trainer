@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:NoP77svk.FalconTrainer.Gui.Win.ViewModels"
+		xmlns:v="clr-namespace:NoP77svk.FalconTrainer.Gui.Win.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
+        x:Class="NoP77svk.FalconTrainer.Gui.Win.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        MinWidth="128" MinHeight="64"
+        Width="800" Height="480"
+        Title="Falcon Trainer">
+	
+	<Window.DataContext>
+		<vm:MainWindowViewModel />
+	</Window.DataContext>
+
+	<Grid RowDefinitions="*,auto,auto">
+		<Viewbox Grid.Row="0"
+				 Stretch="Uniform"
+				 StretchDirection="DownOnly"
+				 Margin="16">
+			<v:MathTaskControl/>
+		</Viewbox>
+
+		<Button Name="BtnSubmit"
+			Grid.Row="1"
+			Content="Submit"
+			IsDefault="True"
+			Command="{Binding SubmitCommand}"
+			IsVisible="True"
+			TabIndex="1"
+			Focusable="False" />
+
+		<Grid ColumnDefinitions="auto,*" Grid.Row="2">
+			<Grid.Styles>
+				<Style Selector="ProgressBar">
+					<Setter Property="Margin" Value="0,0,8,0"/>
+				</Style>
+			</Grid.Styles>
+
+			<ProgressBar Grid.Column="1" Maximum="{Binding ProgressMax}" Value="{Binding ProgressValue}"/>
+			<Label Grid.Column="0">Blížiš sa k cieľu?</Label>
+		</Grid>
+	</Grid>
+</Window>
