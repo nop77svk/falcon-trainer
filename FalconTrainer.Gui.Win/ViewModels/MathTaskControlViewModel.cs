@@ -12,11 +12,13 @@ internal partial class MathTaskControlViewModel : ViewModelBase
 {
     public MathTaskControlViewModel(MathTask mathTask)
     {
+        UnknownPart = string.Empty;
+
         if (mathTask.Parts.Length == 2 && mathTask.Parts[0] is KnownMathTaskPart)
         {
             LeftKnownPart = mathTask.Parts[0].Value;
             // this.LeftKnownPart.IsVisible = true;
-            UnknownPart = mathTask.Parts[1].Value;
+            UnknownPartExpected = mathTask.Parts[1].Value;
             RightKnownPart = string.Empty;
             // this.RightKnownPart.IsVisible = false;
         }
@@ -24,7 +26,7 @@ internal partial class MathTaskControlViewModel : ViewModelBase
         {
             LeftKnownPart = string.Empty;
             // this.LeftKnownPart.IsVisible = false;
-            UnknownPart = mathTask.Parts[0].Value;
+            UnknownPartExpected = mathTask.Parts[0].Value;
             RightKnownPart = mathTask.Parts[1].Value;
             // this.RightKnownPart.IsVisible = true;
         }
@@ -32,7 +34,7 @@ internal partial class MathTaskControlViewModel : ViewModelBase
         {
             LeftKnownPart = mathTask.Parts[0].Value;
             // this.LeftKnownPart.IsVisible = false;
-            UnknownPart = mathTask.Parts[1].Value;
+            UnknownPartExpected = mathTask.Parts[1].Value;
             RightKnownPart = mathTask.Parts[2].Value;
             // this.RightKnownPart.IsVisible = true;
         }
@@ -43,6 +45,9 @@ internal partial class MathTaskControlViewModel : ViewModelBase
 
     [ObservableProperty]
     private string _unknownPart = string.Empty;
+
+    [ObservableProperty]
+    private string _unknownPartExpected = "89";
 
     [ObservableProperty]
     private string _rightKnownPart = string.Empty;

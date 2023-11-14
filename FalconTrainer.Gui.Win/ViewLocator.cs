@@ -11,7 +11,7 @@ public class ViewLocator : IDataTemplate
         if (data == null)
             throw new ArgumentNullException(nameof(data));
 
-        var name = data.GetType().FullName!.Replace("ViewModel", "View");
+        var name = data.GetType().FullName!.Replace("ViewModels", "Views").Replace("ViewModel", string.Empty);
         var type = Type.GetType(name);
 
         if (type != null)
