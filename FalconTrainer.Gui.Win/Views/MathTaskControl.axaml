@@ -37,7 +37,8 @@
 			VerticalAlignment="Center"
 			Classes="NonEmptyLeftSide"
 			Name="LeftKnownPart"
-			Content="{Binding LeftKnownPart}" />
+			Content="{Binding LeftKnownPart}"
+			IsVisible="{Binding LeftKnownPart, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
 		<TextBox
 			Name="UnknownPart"
 			VerticalAlignment="Center"
@@ -51,6 +52,7 @@
 		<Label
 			VerticalAlignment="Center"
 			Classes="EmptyRightSide"
-			Content="{Binding RightKnownPart}" />
+			Content="{Binding RightKnownPart}"
+			IsVisible="{Binding RightKnownPart, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
 	</StackPanel>
 </UserControl>
