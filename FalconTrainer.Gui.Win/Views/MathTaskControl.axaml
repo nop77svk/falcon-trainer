@@ -9,9 +9,11 @@
 	x:DataType="vm:MathTaskControlViewModel"
 	x:Class="NoP77svk.FalconTrainer.Gui.Win.Views.MathTaskControl">
 
+	<!-- 2do! If I put the data context here, the bindings in run time won't work. Why?
 	<UserControl.DataContext>
 		<vm:MathTaskControlViewModel />
 	</UserControl.DataContext>
+	-->
 
 	<StackPanel
 		FlowDirection="LeftToRight"
@@ -35,7 +37,8 @@
 			VerticalAlignment="Center"
 			Classes="NonEmptyLeftSide"
 			Name="LeftKnownPart"
-			Content="{Binding LeftKnownPart}" />
+			Content="{Binding LeftKnownPart}"
+			IsVisible="{Binding LeftKnownPart, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
 		<TextBox
 			Name="UnknownPart"
 			VerticalAlignment="Center"
@@ -44,10 +47,12 @@
 			Focusable="True"
 			Watermark="{Binding UnknownPartWatermark}"
 			TabIndex="0"
+			Tag="{Binding UnknownPartExpected}"
 			Text="{Binding UnknownPart}" />
 		<Label
 			VerticalAlignment="Center"
 			Classes="EmptyRightSide"
-			Content="{Binding RightKnownPart}" />
+			Content="{Binding RightKnownPart}"
+			IsVisible="{Binding RightKnownPart, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
 	</StackPanel>
 </UserControl>

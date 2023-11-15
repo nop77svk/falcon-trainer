@@ -10,7 +10,7 @@ internal partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         _mathTaskRepository = new MathTasksRepository(6);
-        _mathTaskContent = new MathTaskControlViewModel(_mathTaskRepository.GetRandomTask());
+        MathTaskContent = new MathTaskControlViewModel(_mathTaskRepository.GetRandomTask());
     }
 
     private readonly MathTasksRepository _mathTaskRepository;
